@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=Coral+Pixels&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --color-midnight: #222831;
+    --color-night: #393E46;
+    --color-evening: #948979;
+    --color-daylight: #DFD0B8;
+    --font-coralpixel: "Coral Pixels", serif;
+    --font-cosmicrelief: "Comic Relief", system-ui;
+}
