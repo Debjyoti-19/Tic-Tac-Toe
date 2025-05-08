@@ -33,9 +33,9 @@ function Names() {
   }
 
   return (
-    <div className='bg-midnight flex h-screen justify-center items-center'>
+    <div className='bg-midnight flex h-screen justify-center items-center relative'>
       <div className=''>
-        <div id="player1" className='m-5 w-screen justify-center flex -translate-x-20'>
+        <div id="player1" className='m-5 justify-center flex -translate-x-20'>
           <input
             type="text"
             className='h-10 w-60 bg-daylight outline-none text-center font-coralpixel rounded-2xl'
@@ -45,8 +45,10 @@ function Names() {
             onKeyDown={handlePlayer1KeyDown} // Handle Enter key
           />
         </div>
-        <div className='absolute not-last z-10 w-screen -translate-y-10 flex justify-center'><img src={vsImage} alt="VS" className="w-16 h-16" /></div>
-        <div id="player2" className='m-5 w-screen flex justify-center translate-x-20'>
+        <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-1'>
+          <img src={vsImage} alt="VS" className="w-16 h-16" />
+        </div>
+        <div id="player2" className='m-5 flex justify-center translate-x-20'>
           <input
             type="text"
             className='h-10 w-60 bg-daylight outline-none text-center font-coralpixel rounded-2xl'
