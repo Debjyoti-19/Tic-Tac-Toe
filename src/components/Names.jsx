@@ -33,30 +33,30 @@ function Names() {
   }
 
   return (
-    <div className='bg-midnight flex h-screen justify-center items-center relative'>
+    <div className='bg-midnight flex h-screen justify-center items-center relative overflow-hidden'>
       <div className=''>
-        <div id="player1" className='m-5 justify-center flex -translate-x-20'>
+        <div id="player1" className='m-5 justify-center flex -translate-x-13 sm:-translate-x-20'>
           <input
             type="text"
-            className='h-10 w-60 bg-daylight outline-none text-center font-coralpixel rounded-2xl'
+            className='h-10 w-40 sm:w-60 bg-daylight outline-none text-center font-coralpixel rounded-2xl'
             placeholder='First Player'
             value={player1}
             onChange={(e) => setPlayer1(e.target.value)}
-            onKeyDown={handlePlayer1KeyDown} // Handle Enter key
+            onKeyDown={handlePlayer1KeyDown}
           />
         </div>
         <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-1'>
           <img src={vsImage} alt="VS" className="w-16 h-16" />
         </div>
-        <div id="player2" className='m-5 flex justify-center translate-x-20'>
+        <div id="player2" className='m-5 flex justify-center translate-x-13 sm:translate-x-20'>
           <input
             type="text"
-            className='h-10 w-60 bg-daylight outline-none text-center font-coralpixel rounded-2xl'
+            className='h-10 w-40 sm:w-60 bg-daylight outline-none text-center font-coralpixel rounded-2xl'
             placeholder='Second Player'
             value={player2}
             onChange={(e) => setPlayer2(e.target.value)}
-            onKeyDown={handlePlayer2KeyDown} // Handle Enter key
-            ref={player2InputRef} // Attach ref to player2 input
+            onKeyDown={handlePlayer2KeyDown}
+            ref={player2InputRef}
           />
         </div>
       </div>
