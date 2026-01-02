@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 function Board() {
   const [cells, setCells] = useState(Array(9).fill(null));
+  const [clickedOrder, setClickedOrder] = useState([]);
   const [winner, setWinner] = useState(false);
-  const { player, player1, player2, changePlayer, changeWinnerName, winnerName } = useGameStore();
+  const { player, player1, player2, changePlayer, changeWinnerName } = useGameStore();
 
   const navigate = useNavigate()
 
@@ -40,17 +41,21 @@ function Board() {
       const newCells = [...cells];
       newCells[index] = player === 0 ? 'O' : 'X';
       setCells(newCells);
+      setClickedOrder((prev) => [...prev, index]);
 
       const gameWinner = checkWinner(newCells);
       if (gameWinner) {
         changeWinnerName(gameWinner)
         setWinner(true)
         navigate('/winner')
-      } else if (newCells.every((cell) => cell !== null)) {
-        changeWinnerName('Draw')
-        setWinner(true)
-        navigate('/winner')
       } else {
+        const emptyCells = newCells.filter((cell) => cell === null).length;
+        if (emptyCells === 1 && clickedOrder.length > 0) {
+          const firstClicked = clickedOrder[0];
+          newCells[firstClicked] = null;
+          setCells(newCells);
+          setClickedOrder((prev) => prev.slice(1));
+        }
         changePlayer();
       }
     }
@@ -58,10 +63,10 @@ function Board() {
 
   return (
     <div className="bg-midnight h-screen flex justify-center items-center">
-        <div className="absolute top-30 font-cosmicrelief text-daylight text-3xl">
-          <div className="w-screen flex justify-center">Turn of</div>
-          <div className="w-screen flex justify-center">{player === 0 ? player1 : player2}</div>
-        </div>
+      <div className="absolute top-30 font-cosmicrelief text-daylight text-3xl">
+        <div className="w-screen flex justify-center">Turn of</div>
+        <div className="w-screen flex justify-center">{player === 0 ? player1 : player2}</div>
+      </div>
       <div className="h-50 w-50 bg-evening grid grid-cols-3 gap-1 text-daylight cursor-pointer">
         {cells.map((cell, index) => (
           <div

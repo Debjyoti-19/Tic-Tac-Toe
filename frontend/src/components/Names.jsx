@@ -34,7 +34,7 @@ function Names() {
 
   return (
     <div className='bg-midnight flex h-screen justify-center items-center relative overflow-hidden'>
-      <div className=''>
+      <div className='-translate-y-20'>
         <div id="player1" className='m-5 justify-center flex -translate-x-13 sm:-translate-x-20'>
           <input
             type="text"
@@ -59,6 +59,9 @@ function Names() {
             ref={player2InputRef}
           />
         </div>
+      </div>
+      <div id="online" className='w-screen text-daylight/80 hover:text-daylight/70 absolute translate-y-6 text-center cursor-pointer transition' onClick={() => navigate('/online')}>
+        Play online 🌎
       </div>
     </div>
   )
